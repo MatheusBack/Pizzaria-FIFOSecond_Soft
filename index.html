@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pizzaria Segunda Chance</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div><h1>🍕 Pizzaria Segunda Chance</h1><small>Algoritmo FIFO Second Chance em uma esteira de pizzaria</small></div>
+  <div class="stats">
+    <div class="stat"><b id="sReq">0</b><span>Pedidos</span></div>
+    <div class="stat h"><b id="sHit">0</b><span>Hits</span></div>
+    <div class="stat f"><b id="sFault">0</b><span>Faltas</span></div>
+    <div class="stat"><b id="sEff">–</b><span>Eficiência</span></div>
+  </div>
+</header>
+
+<section class="stage" aria-label="Balcão da pizzaria">
+  <div class="menu">Hoje: Segunda Chance!</div>
+  <div class="chefrow"><div class="chef" id="chef">👨‍🍳<i>Chef</i></div></div>
+  <div class="chairs" id="chairs"></div>
+  <div class="belt" aria-hidden="true"><span style="animation-delay:0s">🍕</span><span style="animation-delay:-4s">🍕</span><span style="animation-delay:-8s">🍕</span><span style="animation-delay:-11s">🍕</span></div>
+</section>
+
+<section class="panel">
+  <div class="row">
+    <input type="text" id="seq" value="A, B, C, D, A, B, E, A, B, C, D, E" aria-label="Sequência de clientes">
+    <button class="b-load" id="bLoad">Carregar</button>
+  </div>
+  <div class="hint">Separe os clientes por vírgula. Para um cliente pedir a conta e liberar a cadeira, escreva <b>-A</b>. Exemplo: A, B, C, -B, D</div>
+  <div class="row">
+    <label>Cadeiras <select id="nSel"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select></label>
+    <button class="b-go" id="bStep">▶ Próximo passo</button>
+    <button class="b-auto" id="bAuto">⏩ Auto play</button>
+    <button class="b-reset" id="bReset">↺ Reiniciar</button>
+    <button class="speed b-reset" id="bSnd" style="background:#fff;color:#3a1f10;border:3px solid #9a6238;box-shadow:none" aria-pressed="true">🔊 Som</button>
+  </div>
+  <div class="row speed"><label>Velocidade</label>
+    <button data-s="0.5">0.5x</button><button data-s="1" class="on">1x</button><button data-s="2">2x</button>
+  </div>
+  <div class="progress" id="prog" aria-label="Fila de clientes"></div>
+  <div class="say" id="say">Carregue uma sequência e clique em “Próximo passo”. O chef vai procurar quem deve levantar.</div>
+</section>
+
+<section class="report" id="report">
+  <h2>🧾 Relatório do dia</h2>
+  <div class="rgrid">
+    <div><b id="rReq">0</b>Pedidos</div><div><b id="rHit">0</b>Hits (já estavam sentados)</div>
+    <div><b id="rFault">0</b>Faltas (trocas ou lugar novo)</div><div><b id="rEff">0%</b>Eficiência (hits ÷ pedidos)</div>
+  </div>
+  <div class="bar"><i id="rBar"></i></div>
+</section>
+
+<section class="panel" style="border-color:var(--wood)">
+  <h2 class="t">Diário do chef</h2>
+  <div class="logs" id="logs"></div>
+</section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
